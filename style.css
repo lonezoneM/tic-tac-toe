@@ -1,0 +1,91 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "Itim", cursive;
+    /* font-family: "myFont"; */
+    scroll-behavior: smooth;
+}
+
+body{
+    background: #121818;
+    color:white;
+}
+
+/* @font-face {
+    font-family: "myFont";
+    src: url("myFont.ttf");
+    font-weight: 100;
+} */
+
+a {
+    text-decoration: none;
+    color: #ebebeb;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#playground {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+#game {
+    height: 50vh;
+}
+
+.m-heading{
+	font-family: "Baloo Tamma 2", cursive;
+}
+
+.box {
+    border: 2px solid white;
+    height: 100px;
+    width: 100px;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Baloo Tamma 2";
+    cursor: pointer;
+}
+
+#logo {
+    width: 220px;
+    height: 220px;
+    margin: 10px auto;
+	display: block;
+}
+
+.t {
+    border-top: none;
+}
+
+.b {
+    border-bottom: none;
+}
+
+.r {
+    border-right: none;
+}
+
+.l {
+    border-left: none;
+}
+
+.playerX {
+    /* color: #74bfc7; */
+    color: #119496;
+}
+
+.playerO {
+    color: #4d76e8;
+}
+
+.won{
+    color: #09c372;
+}

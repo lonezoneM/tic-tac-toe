@@ -1,18 +1,37 @@
+$(document).ready(function (){
+				firebase.database().ref("Tahmid@2114").on('value', (a)=>{
+				if(localStorage.getItem("admin")==a.val().playerX || localStorage.getItem("player")==a.val().playerY){
+		      console.log("ok")
+		  }else{
+				document.body.innerHTML=`<div style="height:100vh; font-size:1.5rem" class="text-warning text-center d-flex align-items-center justify-content-center">Access denied!!!</div>`;
+				}
+				})
+});
+
 function ready(){
 	// Listening for Notification
-	firebase.database().ref("modes").on('child_added', (snapshot)=>{
+	let mode=firebase.database().ref("modes");
+	mode.on('value', (snapshot)=>{
 		let notify=snapshot;
-		if(notify.key=="play") {
-			setAll(notify.val());
+		//alert(JSON.stringify(snapshot.val(), null, 4))
+		if(notify.val().play==true) {
+			setAll();
 		}else{
-			return false;
+			document.body.innerHTML=`<div style="height:100vh; font-size:1.5rem" class="text-warning text-center d-flex align-items-center justify-content-center">No match hosted yet.</div>`;
+			firebase.database().ref("modes").on('child_added', (t) => {
+				console.log(100)
+				if(t.key=="play"){
+					window.location.reload();
+				}
+			})
 		}
 	});
 	
 }
 ready();
 
-function setAll(token) {
+function setAll() {
+
 const turn = document.getElementById("turn");
 const round = document.getElementById("rnd");
 const rules = [
@@ -53,9 +72,7 @@ root.on('value', (snapshot)=>{
 	turn.setAttribute("class", `player${player}`);
 	AOS.init();
 
-	if (roundNum>=4) {
-		final()
-	}
+	/*if (roundNum>4) {final()}*/
 })
 
 setTimeout(() => {
@@ -63,16 +80,16 @@ setTimeout(() => {
 	admin=player1.innerHTML
 	opp=player2.innerHTML
 	if(localStorage.getItem("admin")){
-		if(roundNum%2==0) {
+		if(roundNum%2==0){
 			console.log(roundNum)
 			sign = player;
-		}else {
+		}else{
 			sign = player === "X" ? "O" : "X";
 		}
 		// set={}; set[admin]=sign
 		// game.update(set)
-	}else{
-		if(roundNum%2!==0) {
+	}else if(localStorage.getItem("player")){
+		if(roundNum%2!==0){
 			console.log(roundNum)
 			sign = player;
 		}else{
@@ -80,7 +97,9 @@ setTimeout(() => {
 		}
 		// set={}; set[opp]=sign
 		// game.update(set)
-	}
+	}else{
+    console.log("3rd party");
+ }
 	
 	console.log(sign)
 	// sign2.innerHTML=` |${sign}|`; print()
@@ -137,9 +156,11 @@ function change(){
 	classObj1.set({
 		turn:`player${player}`
 	});
+	// check(box);
+	check();
 }
 
-function check(box) {
+function check() {
 	for (i = 0; i < rules.length; i++) {
 		var isWon = false;
 		let win = rules[i];
@@ -168,7 +189,7 @@ function check(box) {
 		alive = false;
 	}
 
-	if(!board.includes("")){
+	if(!board.includes("") && !isWon){
 		game.set({won: "TIE"})
 	}
 }
@@ -189,15 +210,16 @@ function announce(result) {
 	setTimeout(() => {
 		window.location.reload();
 	}, 5000);
-	if(roundNum<4){
-		root.update({"round": roundNum+ 1})
-	}else{
-		final()
-	}
+	final()
 }
 
 function final(){
-	document.body.innerHTML=`<div style="height:100vh" class="text-primary text-center d-flex align-items-center justify-content-center display-4">Thanks for visiting</div>`
+	if(roundNum<4){
+		root.update({"round": roundNum+ 1})
+	}else{
+		document.body.innerHTML=`<div style="height:100vh" class="text-primary text-center d-flex align-items-center justify-content-center display-4">Thanks for visiting</div>`
+		localStorage.clear()
+	}
 }
 
 
@@ -209,7 +231,7 @@ function press(box) {
 		let obj2={}; obj2[id]=`player${player}`;
 		classObj1.set(obj2)
 		change();
-		check(box);
+		//check(box);
 	}
 }
 

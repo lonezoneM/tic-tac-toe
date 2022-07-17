@@ -25,7 +25,6 @@
 	<script src="config.js"></script>
 	<!-- CSS Linking -->
 	<link rel="stylesheet" href="style.css">
-	<!-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> -->
 
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
@@ -46,11 +45,18 @@
 		#rules p,span{
 			font-family: 'Ubuntu', sans-serif;
 		}
+		
+		#note{
+			width: 100%;
+		}
 
 		@media (min-width: 760px) {
 			#logo{
 				width: 300px;
 				height: 300px;
+			}
+			#note{
+				width: 50%;
 			}
 		}
 	</style>
@@ -58,14 +64,14 @@
 </head>
 
 <body class="text-white">
-	<section class="my-2 py-5" id="playground">
-		<div id="note"  data-toggle="modal" data-target="#exampleModal2" class="alert alert-warning alert-dismissible fade show" style="display:none; cursor: pointer;" role="alert">
-			<strong>Notification: </strong> You got an invitation for a match by Tahmid.
-			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			  <span aria-hidden="true">&times;</span>
-			</button>
-		</div>
+	<section class="my-3 py-5" id="playground">
 		<div class="container text-center">
+			<div id="note"  data-toggle="modal" data-target="#exampleModal2" class="alert alert-warning alert-dismissible fade show m-auto" style="display:none; cursor: pointer;" role="alert">
+				<strong>Notification: </strong> You got an invitation for a match by Tahmid.
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			</div><br>
 			<h3>Welcome to</h3>
 			<h1 class="m-heading my-2 text-warning p-1 mt-2">
 				<span class="m-heading playerX">Tic</span> Tac <span class="m-heading text-primary">Toe</span>
@@ -74,6 +80,7 @@
 			<img id="logo" src="logo1.jpg" alt="">
 			<div>
 				<a class="m-heading btn btn-info"  id="tbtn" role="button"  data-toggle="modal" data-target="#exampleModal">Play with friends</a><br>
+				<a style="border:1px solid #ff3860; background: #ff3860; color:white" class="m-heading btn mt-4" role="button"  data-toggle="modal" data-target="#GModal">Set Playground</a><br>
 				<a style="background: #009f0f; color: white;" class="m-heading btn my-4" href="#about" role="button">About
 					Website</a><br>
 				<a class="m-heading btn btn-primary" href="#rules" role="button">Rules</a>
@@ -110,9 +117,9 @@
 	<hr class="bg-white mt-5">
 	<footer class="blog-footer">
 		<div class="container text-center text-light">
-			<p>Copyright © 2021 | Tic Tac Toe </p>
+			<p>Copyright <a href="admin.html">©</a> 2022 | Tic Tac Toe </p>
 			<p class="font-weight-bold">designed by <a class="text-warning"
-					href="https://tahmid-mahmud.guthub.io/portfolio/">Tahmid Mahmud</a>
+					href="https://tahmid-mahmud.github.io/portfolio/">Tahmid Mahmud</a>
 			</p>
 			<p><a class="text-info" href="#">Back to top</a></p>
 		</div>
@@ -125,7 +132,11 @@
 		  <div class="modal-content">
 			<div class="modal-header">
 			  <h5 class="modal-title">Welcome User!</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
 			</div>
+			
 			<div class="modal-body">
 				<form>
 					<div class="form-group">
@@ -147,6 +158,9 @@
 		  <div class="modal-content">
 			<div class="modal-header">
 			  <h5 class="modal-title">Welcome User!</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
 			</div>
 			<div class="modal-body">
 				<form>
@@ -162,7 +176,34 @@
 		  </div>
 		</div>
 	</div>
-
+    <!-- G Modal -->
+        <div class="modal fade text-dark" id="GModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-play text-dark"> </i>  &shy; Playground</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="word-wrap: break-word;">
+                        <p><b>Select your playground</p>
+                        <small class="text-secondary">playground modes</small>
+                        <div id="apk-btns">
+                        	<a href="bot.html" class="btn btn-info mt-1 mr-2 pb-2" target="_blank">
+                                <p style="margin-bottom: 0px;">Play with</p><small><i class="fas fa-duotone fa-robot font-weight-bold"> &shy; Computer</i></small>
+                            </a>
+                        	<a href="solo.html" class="btn btn-success mt-1 pb-2" target="_blank">
+                                <p style="margin-bottom: 0px;">Practice</p><small><i class="fas fa-duotone fa-laptop"> &shy; Yourself</i></small>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>

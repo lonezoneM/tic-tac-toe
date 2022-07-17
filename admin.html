@@ -18,8 +18,7 @@
 	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="config.js"></script>
-	<script src="com.js"></script>
+	<script src="admin.js"></script>
 	
 
 	<!-- Google Fonts -->
@@ -28,51 +27,30 @@
 	<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
 
 	<!-- CSS Linking -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://tahmid-mahmud.github.io/tic-tac-toe/style.css">
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	<script>
-		
-	</script>
+	
 	<title>Tic Tac Toe!</title>
 </head>
 
 <body>
-	<section id="playground">
-		<div class="title text-center">
-			<h1>Tic Tac Toe</h1>
-			<h5 id="draft" data-aos="zoom-in" data-aos-duration="800">Player<span id="turn">#</span> Turn!</h5>
+ <section id="playground">
+ 				<div class="title text-center">
+			<h1 class="text-success mt-4">Welcome User</h1>
+			<h5 class="text-light">Admin panel!</h5>
 		</div>
-		<div id="game" class="mt-5 mb-1">
-			<div class="row">
-				<div class="box t l" id="0"></div>
-				<div class="box t" id="1"></div>
-				<div class="box t r" id="2"></div>
-			</div>
-			<div class="row">
-				<div class="box l" id="3"></div>
-				<div class="box" id="4"></div>
-				<div class="box r" id="5"></div>
-			</div>
-			<div class="row">
-				<div class="box b l" id="6"></div>
-				<div class="box b" id="7"></div>
-				<div class="box b r" id="8"></div>
-			</div>
+		<div class="my-4">
+						<h2 class="text-warning">Reports & Controls</h2>
+						<hr class="bg-light">
+						<p class="font-weight-bold" style="font-size: 1.3rem">Current Database: </p>
+						<button class="mt-5 btn btn-outline-info d-block mx-auto" onclick="show()">View CWD</button><br>
+						<button class="btn btn-outline-primary d-block mx-auto" onclick="reset()">Reset Database</button><br>
+						<button class="btn btn-outline-success d-block mx-auto" onclick="setName()">Set Username</button><br>
+						<button class="btn btn-outline-light d-block mx-auto" onclick="play()">Go to playground</button><br>
+						<button class="btn btn-outline-secondary d-block mx-auto" onclick="flow()">Flow Chart</button><br>
 		</div>
-		<div class="controls">
-			<h5>Round: <span class="playerX" id="rnd">1</span>/4</h5>
-		</div>
-		<div class="row fixed-bottom">
-			<div class="col-6 bg-primary">
-				<p class="m-1 ml-3"><span id="player2" class="mr-2">Computer</span><span id="sign1"></span></p>
-			</div>
-			<div class="col-6" style="background:#119496;">
-				<p class="m-1"><span id="player1" class="mr-2">Computer</span><span id="sign2"></span></p>
-			</div>
-		</div>
-	</section>
-
-
+ </section>
+ 
 	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
